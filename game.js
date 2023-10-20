@@ -61,21 +61,3 @@ function playRound() {
         };
     };
 };
-
-function game() {
-    for (let i = 0; i < 5; i++) {
-        playRound();
-    };
-    
-    if (playerScore > computerScore) {
-        return "You've won this game! Congratulations!"
-    } 
-    else if (playerScore < computerScore) {
-        return "You've lost this game. Better luck next time."
-    }
-    else {
-        return "It's a tie. Close!"
-    }
-};
-
-console.log(game());

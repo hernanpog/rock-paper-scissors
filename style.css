@@ -1,0 +1,81 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  line-height: 1.5;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f5fddd;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+  padding: 3em 3em;
+  border: 10px #86b408 solid;
+  border-radius: 25px;
+  background-color: #e2fa9e;
+}
+
+.pick-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.5em;
+}
+
+.pick {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  width: 40%;
+  border: 5px #0f1301 solid;
+  border-radius: 50%;
+  font-size: 2.25rem;
+  color: #0f1301;
+  background-color: #f8ffe0;
+}
+
+.pick + .pick {
+  margin-left: 7.5%;
+}
+
+.btn-container {
+  display: flex;
+}
+
+.button {
+  aspect-ratio: 1 / 1;
+  width: 30%;
+  padding: 0;
+  border: 5px #86b408 solid;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: #86b408;
+  background-color: #f5fddd;
+}
+
+.button + .button {
+  margin-left: 5%;
+}
