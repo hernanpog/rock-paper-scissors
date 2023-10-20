@@ -1,6 +1,4 @@
-const playerMove = prompt('Pick your move: rock, paper, scissors.');
-
-console.log(playGame(playerMove, pickComputerMove()));
+console.log(playGame(pickComputerMove()));
 
 function pickComputerMove() {
     randomNumber = Math.random();
@@ -14,13 +12,14 @@ function pickComputerMove() {
     }
     else {
         return computerMove = 'scissors';
-    }
+    };
 };
 
-function playGame(playerPick, computerMove) {
-    playerPick = playerPick.toLowerCase();
+function playGame(computerMove) {
+    let playerMove = prompt('Pick your move: rock, paper, scissors.');
+    playerMove = playerMove.toLowerCase();
     
-    if (playerPick === 'rock') {
+    if (playerMove === 'rock') {
         if (computerMove === 'rock') {
             return "It's a tie! Both chose the same move."
         }
@@ -29,9 +28,9 @@ function playGame(playerPick, computerMove) {
         }
         else if (computerMove === 'scissors') {
             return "You win! Rock beats Scissors."
-        }
+        };
     }
-    else if (playerPick === 'paper') {
+    else if (playerMove === 'paper') {
         if (computerMove === 'rock') {
             return "You win! Paper beats Rock."
         }
@@ -42,7 +41,7 @@ function playGame(playerPick, computerMove) {
             return "You lose! Scissors beats Paper."
         }
     }
-    else if (playerPick === 'scissors') {
+    else if (playerMove === 'scissors') {
         if (computerMove === 'rock') {
             return "You lose! Rock beats Scissors."
         }
@@ -51,6 +50,6 @@ function playGame(playerPick, computerMove) {
         }
         else if (computerMove === 'scissors') {
             return "It's a tie! Both chose the same move."
-        }
-    }
+        };
+    };
 };
