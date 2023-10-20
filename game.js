@@ -1,81 +1,81 @@
-console.log(playRound());
+let playerScore = 0;
+let computerScore = 0;
 
 function pickComputerMove() {
     randomNumber = Math.random();
-    let computerMove;
 
     if (randomNumber < 0.3) {
-        return computerMove = 'rock';
+        return 'rock';
     }
     else if (randomNumber > 0.3 && randomNumber < 0.6) {
-        return computerMove = 'paper';
+        return 'paper';
     }
     else {
-        return computerMove = 'scissors';
+        return 'scissors';
     };
 };
 
 function playRound() {
+    let playerMove = prompt('Pick your move: rock, paper, scissors.');
+    playerMove = playerMove.toLowerCase();
 
-    let message = '';
-    let playerScore = 0;
-    let computerScore = 0;
-
-    for (let i = 0; i < 5; i++) {
-        let playerMove = prompt('Pick your move: rock, paper, scissors.');
-        playerMove = playerMove.toLowerCase();
-
-        let computerMove = pickComputerMove();
-        
-        if (playerMove === 'rock') {
-            if (computerMove === 'rock') {
-                message = "It's a tie! Both chose the same move."
-            }
-            else if (computerMove === 'paper') {
-                message = "You lose! Paper beats Rock."
-                computerScore++;
-            }
-            else if (computerMove === 'scissors') {
-                message = "You win! Rock beats Scissors."
-                playerScore++;
-            };
+    let computerMove = pickComputerMove();
+    
+    if (playerMove === 'rock') {
+        if (computerMove === 'rock') {
+            console.log(`It's a tie! Both chose the same move.\nScore: You: ${playerScore} Computer: ${computerScore}`);
         }
-        else if (playerMove === 'paper') {
-            if (computerMove === 'rock') {
-                message = "You win! Paper beats Rock."
-                playerScore++;
-            }
-            else if (computerMove === 'paper') {
-                message = "It's a tie! Both chose the same move."
-            }
-            else if (computerMove === 'scissors') {
-                message = "You lose! Scissors beats Paper."
-                computerScore++;
-            }
+        else if (computerMove === 'paper') {
+            computerScore++;
+            console.log(`You lose! Paper beats Rock.\nScore: You: ${playerScore} Computer: ${computerScore}`);
         }
-        else if (playerMove === 'scissors') {
-            if (computerMove === 'rock') {
-                message = "You lose! Rock beats Scissors."
-                computerScore++;
-            }
-            else if (computerMove === 'paper') {
-                message = "You win! Scissors beats Paper"
-                playerScore++;
-            }
-            else if (computerMove === 'scissors') {
-                message = "It's a tie! Both chose the same move."
-            };
+        else if (computerMove === 'scissors') {
+            playerScore++;
+            console.log(`You win! Rock beats Scissors.\nScore: You: ${playerScore} Computer: ${computerScore}`);
         };
-        console.log(`${message}\nScore: You = ${playerScore} Computer = ${computerScore}`);
-    };
-
-    if (playerScore > computerScore) {
-        return 'You Won!'
     }
+    else if (playerMove === 'paper') {
+        if (computerMove === 'rock') {
+            playerScore++;
+            console.log(`You win! Paper beats Rock.\nScore: You: ${playerScore} Computer: ${computerScore}`);
+        }
+        else if (computerMove === 'paper') {
+            console.log(`It's a tie! Both chose the same move.\nScore: You: ${playerScore} Computer: ${computerScore}`);
+        }
+        else if (computerMove === 'scissors') {
+            computerScore++;
+            console.log(`You lose! Scissors beats Paper.\nScore: You: ${playerScore} Computer: ${computerScore}`);
+        }
+    }
+    else if (playerMove === 'scissors') {
+        if (computerMove === 'rock') {
+            computerScore++;
+            console.log(`You lose! Rock beats Scissors.\nScore: You: ${playerScore} Computer: ${computerScore}`);
+        }
+        else if (computerMove === 'paper') {
+            playerScore++;
+            console.log(`You win! Scissors beats Paper.\nScore: You: ${playerScore} Computer: ${computerScore}`);
+        }
+        else if (computerMove === 'scissors') {
+            console.log(`It's a tie! Both chose the same move.\nScore: You: ${playerScore} Computer: ${computerScore}`);
+        };
+    };
+};
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+        playRound();
+    };
+    
+    if (playerScore > computerScore) {
+        return "You've won this game! Congratulations!"
+    } 
     else if (playerScore < computerScore) {
-        return 'You Lost!';
+        return "You've lost this game. Better luck next time."
     }
     else {
-        return "It's a tie!";
+        return "It's a tie. Close!"
     }
 };
+
+console.log(game());
